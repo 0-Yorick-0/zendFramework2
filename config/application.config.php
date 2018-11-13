@@ -11,6 +11,7 @@ return array(
         'Album',
         'Blog',
         'Checklist',
+        'Product',
     ),
     'module_listener_options' => array(
         'module_paths' => array(

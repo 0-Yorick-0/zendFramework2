@@ -1,0 +1,47 @@
+<?php
+$title = 'Add Product';
+$this->headTitle($title);
+?>
+<h1><?=  $this->escapeHtml($title); ?></h1>
+
+<?php
+$form = $this->form;
+$form->setAttribute('action', $this->url('product'));
+$form->prepare();
+?>
+<?= $this->form()->openTag($form); ?>
+
+<?php $product = $form->get('product'); ?>
+
+<?= $this->formRow($product->get('name')); ?>
+<?= $this->formRow($product->get('price')); ?>
+<?= $this->formCollection($product->get('categories')); ?>
+<button id="add-category">Add a new category</button><br>
+
+<?php $brand = $product->get('brand'); ?>
+
+<?= $this->formRow($brand->get('name')); ?>
+<?= $this->formRow($brand->get('url')); ?>
+
+<?= $this->formHidden($form->get('csrf')); ?>
+<?= $this->formElement($form->get('submit')); ?>
+
+<?= $this->form()->closeTag(); ?>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        console.log('jQuery is damned ready !');  
+
+        $( '#add-category' ).on('click', function(e) {
+            e.preventDefault();
+
+            var currentCount = $('form > fieldset > fieldset').length;
+            var template = $('form > fieldset > span').data('template');
+            template = template.replace(/__myBalls__/g, currentCount);
+
+            $('form > fieldset').append(template);
+
+            return false;
+        });
+    });
+</script>
