@@ -77,9 +77,9 @@ class ProductFieldset extends Fieldset implements InputFilterProviderInterface
             'price' => array(
                 'required' => true,
                 'validators' => array(
-                    // array(
-                    //     'name' => new \Zend\I18n\Validator\Float(),
-                    // ),
+                    array(
+                        'name' => '\Zend\Validator\Digits',
+                    ),
                 ),
             ),
         );

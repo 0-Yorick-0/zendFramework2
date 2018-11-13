@@ -26,6 +26,9 @@ class ProductController extends AbstractActionController
                 var_dump($form->getObject());
                 die();
             }
+        }else {
+            $messages = $form->getMessages();
+            var_dump($messages);
         }
         return array(
             'form' => $form,
